@@ -177,8 +177,11 @@ let h=document.createElement("div");
 h.className="heart";
 h.innerHTML="💖";
 
-h.style.left = rect.left + rect.width/2 + "px";
-h.style.top = rect.top + rect.height/2 + "px";
+const offsetX = (Math.random()-0.5)*200;
+const offsetY = (Math.random()-0.5)*100;
+
+h.style.left = rect.left + rect.width/2 + offsetX + "px";
+h.style.top = rect.top + rect.height/2 + offsetY + "px";
 
 h.style.animationDuration = 2 + Math.random()*1 + "s";
 
