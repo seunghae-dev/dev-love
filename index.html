@@ -141,12 +141,16 @@ const result=document.getElementById("result");
 const card=document.getElementById("card");
 
 function moveNoButton(){
-const rect=btnArea.getBoundingClientRect();
-const maxX=rect.width-noBtn.offsetWidth;
-const maxY=rect.height-noBtn.offsetHeight;
-noBtn.style.left=Math.random()*maxX+"px";
-noBtn.style.top=Math.random()*maxY+"px";
-noBtn.style.bottom="auto";
+  
+const vw = window.innerWidth - noBtn.offsetWidth;
+const vh = window.innerHeight - noBtn.offsetHeight;
+
+const randomX = Math.random() * vw;
+const randomY = Math.random() * vh;
+
+noBtn.style.position="fixed";
+noBtn.style.left = randomX + "px";
+noBtn.style.top = randomY + "px";
 }
 
 noBtn.addEventListener("touchstart",moveNoButton);
@@ -166,13 +170,18 @@ noBtn.style.display="none";
 const centerX=window.innerWidth/2;
 const centerY=window.innerHeight/2;
 
+const rect = card.getBoundingClientRect();
+
 for(let i=0;i<60;i++){
 let h=document.createElement("div");
 h.className="heart";
 h.innerHTML="💖";
-h.style.left=centerX+"px";
-h.style.top=centerY+"px";
-h.style.animationDuration=2+Math.random()*2+"s";
+
+h.style.left = rect.left + rect.width/2 + "px";
+h.style.top = rect.top + rect.height/2 + "px";
+
+h.style.animationDuration = 2 + Math.random()*1 + "s";
+
 document.body.appendChild(h);
 }
 
